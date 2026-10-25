@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Connecting to Video Studio…</title><link rel="stylesheet" href="../style.css"></head>
+<body>
+<h1>Connecting to Video Studio…</h1>
+<p id="msg">Sending you back to Video Studio on this Mac.</p>
+<p class="muted">If nothing happens (Video Studio isn't running), copy this whole address and paste it into Video Studio → Accounts → your TikTok account → Connect:</p>
+<code id="addr"></code>
+<script>
+  document.getElementById("addr").textContent = location.href;
+  if (location.search.includes("code=") || location.search.includes("error=")) {
+    // Forward TikTok's answer to the Studio running on this computer.
+    location.href = "http://localhost:4747/oauth/tiktok" + location.search;
+  } else {
+    document.getElementById("msg").textContent = "This page receives TikTok's sign-in answer for Video Studio.";
+  }
+</script>
+</body></html>
